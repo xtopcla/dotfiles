@@ -22,6 +22,7 @@ let iCanHazVundle=1
     Bundle 'kien/ctrlp.vim'
     Bundle 'scrooloose/nerdtree'
     Bundle 'Lokaltog/powerline'
+    Bundle 'fs111/pydoc.vim'
 
 set showmode
 set showcmd
@@ -57,9 +58,17 @@ set wildignore+=*.o,*~,*.lo,*.swp,*.pyc,*.class
 set suffixes+=.in,.a
 set wildchar=<TAB>
 
+set foldmethod=indent
+set foldlevel=99
+
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 
 let mapleader = ","
+
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>
 
 nmap <Leader>l :setlocal number!<CR>
 nmap <Leader>e :NERDTreeToggle<CR>
@@ -102,3 +111,5 @@ let g:syntastic_python_flake8_args='--ignore=E501'
 let g:syntastic_mode_map = {'mode': 'active',
                            \ 'active_filetypes': ['py'],
                            \ 'passive_filetypes': ['html', 'js'] }
+
+filetype plugin on
