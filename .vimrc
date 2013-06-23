@@ -22,7 +22,7 @@ let iCanHazVundle=1
     Bundle 'kien/ctrlp.vim'
     Bundle 'scrooloose/nerdtree'
     Bundle 'Lokaltog/powerline'
-    Bundle 'fs111/pydoc.vim'
+    Bundle 'davidhalter/jedi-vim'
 
 set showmode
 set showcmd
@@ -86,6 +86,7 @@ let g:ctrlp_dotfiles = 0
 let g:ctrlp_switch_buffer = 0
 
 hi LineNr cterm=bold ctermfg=DarkGrey
+hi Pmenu ctermbg=blue
 
 match Todo /\s\+$/
 
@@ -112,4 +113,10 @@ let g:syntastic_mode_map = {'mode': 'active',
                            \ 'active_filetypes': ['py'],
                            \ 'passive_filetypes': ['html', 'js'] }
 
-filetype plugin on
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#show_function_definition = 0
+let g:jedi#popup_on_dot = 0
+let g:jedi#popup_select_first = 0
+set completeopt=longest,menuone,preview
+
+filetype plugin indent on
