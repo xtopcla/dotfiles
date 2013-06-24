@@ -15,10 +15,8 @@ let iCanHazVundle=1
 
     Bundle 'gmarik/vundle'
 
-    Bundle 'pangloss/vim-javascript'
-    Bundle 'vim-scripts/jQuery'
     Bundle 'tpope/vim-fugitive'
-    Bundle 'scrooloose/syntastic'
+    Bundle 'klen/python-mode'
     Bundle 'kien/ctrlp.vim'
     Bundle 'scrooloose/nerdtree'
     Bundle 'Lokaltog/powerline'
@@ -63,6 +61,8 @@ set foldlevel=99
 
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 
+set completeopt=longest,menuone,preview
+
 let mapleader = ","
 
 map <c-j> <c-w>j
@@ -73,24 +73,13 @@ map <c-h> <c-w>
 nmap <Leader>l :setlocal number!<CR>
 nmap <Leader>e :NERDTreeToggle<CR>
 
-" NERDTree settings
-let g:NERDTreeHijackNetrw=0
-let g:NERDTreeIgnore=['\.swp$', '\.pyc$', '\~$', '\.class$']
-let g:NERDTreeWinSize=40
-
-let g:ctrlp_map = '<Leader>t'
-let g:ctrlp_match_window_bottom = 0
-let g:ctrlp_match_window_reversed = 0
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_dotfiles = 0
-let g:ctrlp_switch_buffer = 0
-
 hi LineNr cterm=bold ctermfg=DarkGrey
 hi Pmenu ctermbg=blue
+hi Search ctermbg=208 ctermfg=124
 
 match Todo /\s\+$/
 
-highlight Search ctermbg=208 ctermfg=124
+filetype plugin indent on
 
 if $COLORTERM == 'gnome-terminal'
   set t_Co=256
@@ -107,16 +96,49 @@ autocmd BufReadPost *
     \   exe "normal! g`\"" |
     \ endif
 
-let g:syntastic_python_checkers=['flake8']
-let g:syntastic_python_flake8_args='--ignore=E501'
-let g:syntastic_mode_map = {'mode': 'active',
-                           \ 'active_filetypes': ['py'],
-                           \ 'passive_filetypes': ['html', 'js'] }
+" NERDTree settings
+let g:NERDTreeHijackNetrw=0
+let g:NERDTreeIgnore=['\.swp$', '\.pyc$', '\~$', '\.class$']
+let g:NERDTreeWinSize=40
 
-let g:jedi#auto_vim_configuration = 0
-let g:jedi#show_function_definition = 0
+" CtrlP settings
+let g:ctrlp_map = '<Leader>t'
+let g:ctrlp_match_window_bottom = 0
+let g:ctrlp_match_window_reversed = 0
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_dotfiles = 0
+let g:ctrlp_switch_buffer = 0
+
+
+" Python-mode settings
+"Linting
+let g:pymode_lint_ignore = "E501"
+let g:pymode_lint = 1
+let g:pymode_lint_checker = "pyflakes,pep8"
+let g:pymode_lint_cwindow = 0
+
+" Auto check on save
+let g:pymode_lint_write = 1
+
+" Support virtualenv
+let g:pymode_virtualenv = 1
+
+" syntax highlighting
+let g:pymode_syntax = 1
+let g:pymode_syntax_all = 1
+let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+let g:pymode_syntax_space_errors = g:pymode_syntax_all
+
+" Don't autofold code
+let g:pymode_folding = 0
+
+let g:pymode_rope = 0
+
+" Documentation
+let g:pymode_doc = 1
+let g:pymode_doc_key = 'K'
+
+" Jedi settings
 let g:jedi#popup_on_dot = 0
 let g:jedi#popup_select_first = 0
-set completeopt=longest,menuone,preview
-
-filetype plugin indent on
+let g:jedi#show_function_definition = 0
