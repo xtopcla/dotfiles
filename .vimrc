@@ -23,6 +23,7 @@ let iCanHazVundle=1
     Bundle 'davidhalter/jedi-vim'
     Bundle 'tpope/vim-surround'
     Bundle 'vim-scripts/twilight256.vim'
+    Bundle 'Lokaltog/vim-distinguished'
 
 set showmode
 set showcmd
