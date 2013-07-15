@@ -21,6 +21,8 @@ let iCanHazVundle=1
     Bundle 'scrooloose/nerdtree'
     Bundle 'Lokaltog/powerline'
     Bundle 'davidhalter/jedi-vim'
+    Bundle 'tpope/vim-surround'
+    Bundle 'vim-scripts/twilight256.vim'
 
 set showmode
 set showcmd
@@ -31,6 +33,8 @@ set shiftwidth=4
 set smartindent
 set pastetoggle=<F2>
 set number
+
+set colorcolumn=80
 
 set nohlsearch
 set incsearch
@@ -63,6 +67,10 @@ set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 
 set completeopt=longest,menuone,preview
 
+:set guioptions-=m  "remove menu bar
+:set guioptions-=T  "remove toolbar
+:set guioptions-=r  "remove right-hand scroll bar
+
 let mapleader = ","
 
 map <c-j> <c-w>j
@@ -76,6 +84,9 @@ nmap <Leader>e :NERDTreeToggle<CR>
 hi LineNr cterm=bold ctermfg=DarkGrey
 hi Pmenu ctermbg=blue
 hi Search ctermbg=208 ctermfg=124
+hi ColorColumn guibg=#2c2d27 ctermbg=235
+
+let &colorcolumn="80,".join(range(120,999),",")
 
 match Todo /\s\+$/
 
@@ -84,6 +95,8 @@ filetype plugin indent on
 if $COLORTERM == 'gnome-terminal'
   set t_Co=256
 end
+
+color distinguished
 
 if &t_Co > 2 || has("gui_running")
    " switch syntax highlighting on, when the terminal has colors
