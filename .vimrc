@@ -24,6 +24,7 @@ let iCanHazVundle=1
     Bundle 'tpope/vim-surround'
     Bundle 'vim-scripts/twilight256.vim'
     Bundle 'Lokaltog/vim-distinguished'
+    Bundle 'nanotech/jellybeans.vim'
 
 set showmode
 set showcmd
@@ -97,7 +98,7 @@ if $COLORTERM == 'gnome-terminal'
   set t_Co=256
 end
 
-color distinguished
+color jellybeans
 
 if &t_Co > 2 || has("gui_running")
    " switch syntax highlighting on, when the terminal has colors
