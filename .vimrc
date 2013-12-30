@@ -75,11 +75,6 @@ set completeopt=longest,menuone,preview
 
 let mapleader = ","
 
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-map <c-l> <c-w>l
-map <c-h> <c-w>
-
 nmap <Leader>l :setlocal number!<CR>
 nmap <Leader>e :NERDTreeToggle<CR>
 
@@ -157,3 +152,8 @@ let g:pymode_doc_key = 'K'
 let g:jedi#popup_on_dot = 0
 let g:jedi#popup_select_first = 0
 let g:jedi#show_function_definition = 0
+
+nnoremap <silent> <C-Right> <c-w>l
+nnoremap <silent> <C-Left> <c-w>h
+nnoremap <silent> <C-Up> <c-w>k
+nnoremap <silent> <C-Down> <c-w>j
