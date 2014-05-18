@@ -20,11 +20,9 @@ let iCanHazVundle=1
     Bundle 'kien/ctrlp.vim'
     Bundle 'scrooloose/nerdtree'
     Bundle 'Lokaltog/powerline'
-    Bundle 'davidhalter/jedi-vim'
     Bundle 'tpope/vim-surround'
-    Bundle 'vim-scripts/twilight256.vim'
-    Bundle 'Lokaltog/vim-distinguished'
     Bundle 'nanotech/jellybeans.vim'
+    Bundle 'altercation/vim-colors-solarized'
 
 set showmode
 set showcmd
@@ -69,9 +67,9 @@ set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 
 set completeopt=longest,menuone,preview
 
-:set guioptions-=m  "remove menu bar
-:set guioptions-=T  "remove toolbar
-:set guioptions-=r  "remove right-hand scroll bar
+set guioptions-=m  "remove menu bar
+set guioptions-=T  "remove toolbar
+set guioptions-=r  "remove right-hand scroll bar
 
 let mapleader = ","
 
@@ -85,7 +83,7 @@ hi ColorColumn guibg=#2c2d27 ctermbg=235
 
 let &colorcolumn="80,".join(range(120,999),",")
 
-match Todo /\s\+$/
+"match Todo /\s\+$/
 
 filetype plugin indent on
 
@@ -93,7 +91,13 @@ if $COLORTERM == 'gnome-terminal'
   set t_Co=256
 end
 
-color jellybeans
+"color jellybeans
+set background=light
+let g:solarized_termtrans=1
+let g:solarized_termcolors=256
+let g:solarized_contrast="high"
+let g:solarized_visibility="high"
+colorscheme solarized
 
 if &t_Co > 2 || has("gui_running")
    " switch syntax highlighting on, when the terminal has colors
@@ -142,18 +146,17 @@ let g:pymode_syntax_space_errors = g:pymode_syntax_all
 " Don't autofold code
 let g:pymode_folding = 0
 
-let g:pymode_rope = 0
+let g:pymode_rope = 1
+let g:pymode_rope_goto_def_newwin = "new"
+let g:pymode_rope_goto_definition_bind = '<Leader>j'
 
 " Documentation
 let g:pymode_doc = 1
 let g:pymode_doc_key = 'K'
 
-" Jedi settings
-let g:jedi#popup_on_dot = 0
-let g:jedi#popup_select_first = 0
-let g:jedi#show_function_definition = 0
-
 nnoremap <silent> <C-Right> <c-w>l
 nnoremap <silent> <C-Left> <c-w>h
 nnoremap <silent> <C-Up> <c-w>k
 nnoremap <silent> <C-Down> <c-w>j
+
+let @p="oimport pdb; pdb.set_trace"
