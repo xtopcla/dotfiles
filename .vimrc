@@ -128,8 +128,9 @@ let g:ctrlp_switch_buffer = 0
 "Linting
 let g:pymode_lint_ignore = "E501"
 let g:pymode_lint = 1
-let g:pymode_lint_checker = "pyflakes,pep8"
+let g:pymode_lint_checker = ["pyflakes", "pep8"]
 let g:pymode_lint_cwindow = 0
+let g:pymode_trim_whitespaces = 1
 
 " Auto check on save
 let g:pymode_lint_write = 1
@@ -146,9 +147,13 @@ let g:pymode_syntax_space_errors = g:pymode_syntax_all
 " Don't autofold code
 let g:pymode_folding = 0
 
+" Rope settings
 let g:pymode_rope = 1
 let g:pymode_rope_goto_def_newwin = "new"
 let g:pymode_rope_goto_definition_bind = '<Leader>j'
+
+" autocomplete
+let g:pymode_rope_completion = 0
 
 " Documentation
 let g:pymode_doc = 1
@@ -159,4 +164,4 @@ nnoremap <silent> <C-Left> <c-w>h
 nnoremap <silent> <C-Up> <c-w>k
 nnoremap <silent> <C-Down> <c-w>j
 
-let @p="oimport pdb; pdb.set_trace"
+let @p="oimport pdb; pdb.set_trace()"
