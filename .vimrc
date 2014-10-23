@@ -23,6 +23,8 @@ let iCanHazVundle=1
     Bundle 'tpope/vim-surround'
     Bundle 'nanotech/jellybeans.vim'
     Bundle 'altercation/vim-colors-solarized'
+    "node.js dependency
+    Bundle "wookiehangover/jshint.vim"
 
 set showmode
 set showcmd
@@ -165,3 +167,6 @@ nnoremap <silent> <C-Up> <c-w>k
 nnoremap <silent> <C-Down> <c-w>j
 
 let @p="oimport pdb; pdb.set_trace()"
+
+autocmd Filetype html setlocal ts=2 sts=2 sw=2
+autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
